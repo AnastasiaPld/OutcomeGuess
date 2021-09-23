@@ -18,28 +18,51 @@ public class Calculation {
 //        this.finalScore = finalScore;
 //    }
 
-    public String outcome(String guess, int score) {
-        String prize;
+    public void outcome(String winTeam, int winScore) {
+        String s= "Reward 100$";
 
-        if (score == finalScore && guess == team) {
-            prize = "300$";
-           return prize + " " + String.format("Congratulations you win is %s. Your guess is correct for team and score!", prize);
-        } else if (score != finalScore || guess == team) {
-            prize = "10$";
-            return prize + " " +  String.format("Congratulations you win is %s. Your guess for winning team is correct!", prize);
-        } else if (finalScore == score || guess != team) {
-            prize = "200$";
-            return prize + " " + String.format("Congrats your win is %s Your guess about the score is correct!", prize);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please, enter team for your bet:");
+        String guessTeam = sc.nextLine();
+        System.out.println("Yor bet for a team is:" + guessTeam);
+        String tempTeam= guessTeam;
 
-        } else if (finalScore != score && guess != team) ;
-        prize = "0";
-        {
-            return prize +" " +  String.format("Your answer is incorrect and rewards is %s", prize);
+        System.out.println("Please, enter score for winning team:");
+        int guessScore = sc.nextInt();
+        int tempScore =guessScore;
 
+        System.out.println("Yor bet for a score is:" + guessScore);
+
+        String output = "Your bet is:" + tempTeam + " " + tempScore;
+        System.out.println(output);
+
+        if (tempTeam.matches(winTeam)|| tempScore!=winScore) {
+            System.out.println("You win! Score is corect and Team too!");
+            if (tempScore == winScore) {
+                System.out.println("You win biggest reward!");
+                if (tempTeam.matches(winTeam) && tempScore == winScore) {
+                    System.out.println("You win. Team is correct");
+                    if(!tempTeam.matches(winTeam) && tempScore != winScore) {
+                        System.out.println("No reward!");
+                    }
+                }
+            }
         }
+
+
+
+
     }
 
 }
+
+
+
+
+
+
+
+
 
 
 
